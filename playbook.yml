@@ -1,7 +1,10 @@
 ---
 - name: Dump
-  hosts: "{{ target|default('localhost') }}"
+  hosts: stage
+  connection: local
   tasks:
+    - ansible.builtin.debug:
+        msg: "--==[[ STAGING ]]==--"
     - name: Facts
       ansible.builtin.setup:
         gather_subset:
